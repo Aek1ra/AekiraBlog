@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aekira.aekiraBlog.mapper.user_data_mapper">
+
+    <select id="findAll" resultType="com.aekira.aekiraBlog.entity.user_data">
+        SELECT * FROM sys_user
+    </select>
+
+
+    <select id="findId" resultType="com.aekira.aekiraBlog.entity.user_data">
+        SELECT id,username FROM sys_user where 1 = 1
+    <if test="user_data_gsid_pojo.id != null">
+        AND id = #{user_data_gsid_pojo.id}
+    </if>
+
+    </select>
+
+    <select id="save" resultType="com.aekira.aekiraBlog.entity.user_data">
+        INSERT INTO sys_user(username,password)
+        VALUES (#{user_data_pojo.username}, #{user_data_pojo.password})
+    </select>
+
+</mapper>
